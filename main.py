@@ -97,7 +97,6 @@ def build_mark_index(filepath, broker):
         mark_pair = (str(i), str(MARK))
         index.append(mark_pair)
         i = i + 1
-    # print(index)
     return index
 
 def get_marks_with_index(filepath, broker, choices):

@@ -22,7 +22,6 @@ def home():
         if form.validate_on_submit() and file.filename != '':
             filepath = secure_filename(file.filename)
             file.save(filepath)
-            # print('File Saved ' + str(filepath))
             return redirect(url_for('choose_mark', filepath=filepath, broker=str(form.broker.data)))
     return render_template('index.html', form=form, message=message)
 
@@ -31,12 +30,6 @@ def choose_mark(filepath, broker):
     form = MarkForm()
     MARK_LIST = build_mark_list(filepath, broker)
     if request.method == 'POST':
-        # print('Selected Indices: ')
-        # print(form.mark_list.data)
-        # CHOSEN_LIST = get_marks_with_index(filepath, broker, request.form.mark_list.data)
-        # print(MARK_LIST)
-        print(request.form.getlist('mark_list'))
-        print(type(request.form.getlist('mark_list')))
         output_filepath = main_process(filepath, broker, request.form.getlist('mark_list'))
         download_url = get_download_url(output_filepath)
         return download_url
