@@ -3,3 +3,5 @@ flask-wtf
 gunicorn
 pandas
 Werkzeug
+XlsxWriter
+xlrd

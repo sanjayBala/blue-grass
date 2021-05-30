@@ -113,13 +113,13 @@ def get_marks_with_index(filepath, broker, choices):
 
 
 def main_process(filepath, broker, MARKS_LIST):
+    broker = str(broker)
     date_postfix =  get_date()
-    output_filepath = 'final_report_' + date_postfix + '.txt'
+    output_filepath = 'final_report_' + date_postfix + '_' + broker + '.txt'
     sys.stdout = open(output_filepath, 'w')
+    print('BROKER: ' + broker)
     df = pre_process(filepath, broker)
     compute_stats(df, MARKS_LIST)
     sys.stdout.close()
     return output_filepath
 
-# MARKS = ['SILVERVALLEY PREMIUM', 'ABT SUPREME', 'ABTGOLD']
-# build_mark_index('/Users/sanjaybalaji/Desktop/JT_sample.xls', 'JT', MARKS)
