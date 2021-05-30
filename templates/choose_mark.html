@@ -38,7 +38,7 @@
                     {{ form.hidden_tag() }}
                     <fieldset class="form-group w-50">
                         <legend class="border-bottom mb-4">{{ legend }}</legend>
-                            <select id="boot-multiselect" name="mark_list" size="5" multiple="multiple">
+                            <select id="boot-multiselect" name="mark_list" multiple="multiple">
                                 {% for mark in marks %}
                                     <option value="{{mark}}" data-tokens="{{mark}}">{{mark}}</option>
                                 {% endfor %}
@@ -47,7 +47,7 @@
                             </select>
                     </fieldset>
                     <div class="form-group">
-                        {{ form.submit(class="btn btn-outline-info") }}
+                        {{ form.submit(class="btn btn-info") }}
                     </div>
                 </form>
             </div>

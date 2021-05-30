@@ -30,9 +30,10 @@ def choose_mark(filepath, broker):
     form = MarkForm()
     MARK_LIST = build_mark_list(filepath, broker)
     if request.method == 'POST':
-        output_filepath = main_process(filepath, broker, request.form.getlist('mark_list'))
-        download_url = get_download_url(output_filepath)
-        return download_url
+        if form.validate_on_submit():
+            output_filepath = main_process(filepath, broker, request.form.getlist('mark_list'))
+            download_url = get_download_url(output_filepath)
+            return download_url
     return render_template('choose_mark.html', form=form, marks=MARK_LIST)
 
 
