@@ -4,6 +4,7 @@ import datetime
 
 JT_COLUMNS = ['LotNo', 'Estate', 'InvoiceNo', 'Grade', 'Bags', 'NetKgs', 'TotalKgs', 'Price']
 GLOBAL_COLUMNS = ["LotNo", "Estate", "Grade", "DQ", "InvoiceNo", "Price", "BUYER", "Bags", "NetKgs", "TotalKgs", "SAMPLE_KGS" ]
+CTL_COLUMNS = ['LotNo', 'Estate', 'Grade', 'InvoiceNo', 'Bags', 'TotalKgs', 'Price', 'BUYER']
 
 def get_date():
     x = datetime.datetime.now()
@@ -17,6 +18,9 @@ def pre_process(filepath, broker):
     elif broker == 'GLOBAL':
         df.drop(df.index[[0,1,2]], inplace=True)
         df.columns = GLOBAL_COLUMNS
+    elif broker == 'CTL':
+        df.drop(df.index[[0]], inplace=True)
+        df.columns = CTL_COLUMNS
     else:
         print('ERROR!!!! NO SUCH BROKER')
         return
