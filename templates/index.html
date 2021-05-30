@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html> 
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <title>ABT</title>
+    </head>
+    <body class="bg-secondary text-white bg-dark">
+        </br></br></br></br></br>
+        <h2 class="article-title" align="center">
+            <div class="bg-dark text-white">
+                Sale Summary
+            </div>
+        </h2>
+        <div class="container">
+            <div class="form-group content" align="center">
+                <form method="POST" action="" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+                    <fieldset class="form-group w-25">
+                        <legend class="border-bottom mb-4">{{ legend }}</legend>
+                            <div class="form-group">
+                                {{ form.file.label(class="form-control-label") }}
+                                    {{ form.file(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.file.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                        {{message}}
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                {{ form.broker.label(class="form-control-label") }}
+                                {% if form.broker.errors %}
+                                    {{ form.broker(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.broker.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.broker(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+                    </fieldset>
+                    <div class="form-group">
+                        {{ form.submit(class="btn btn-outline-info") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

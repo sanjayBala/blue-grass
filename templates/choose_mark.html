@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html> 
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>        
+        <!-- AJAX -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- bootstrap multiselect -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.16/css/bootstrap-multiselect.css" integrity="sha512-DJ1SGx61zfspL2OycyUiXuLtxNqA3GxsXNinUX3AnvnwxbZ+YQxBARtX8G/zHvWRG9aFZz+C7HxcWMB0+heo3w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.16/js/bootstrap-multiselect.js" integrity="sha512-5EvDL79fM8WJcOk77QpsZ8DawGlSfbOZ/ycRPz0bxRgtiOFEMj8taAoqmm7AR4p2N+A6VBLg/Ar30L8qbPw1pQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <title>ABT</title>
+    </head>
+    <body class="bg-secondary text-white bg-dark">
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#boot-multiselect').multiselect({
+                includeSelectAllOption: true,
+                buttonWidth: 250,
+                enableFiltering: true
+            });
+            });
+        </script>
+        </br></br></br></br></br>
+        <h2 class="article-title" align="center">
+            <div class="bg-dark text-white">
+                Sale Summary
+            </div>
+        </h2>
+        <div class="container">
+            <div class="form-group content" align="center">
+                <form method="POST" action="" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+                    <fieldset class="form-group w-50">
+                        <legend class="border-bottom mb-4">{{ legend }}</legend>
+                            <select id="boot-multiselect" name="mark_list" size="5" multiple="multiple">
+                                {% for mark in marks %}
+                                    <option value="{{mark}}" data-tokens="{{mark}}">{{mark}}</option>
+                                {% endfor %}
+                                <!-- <option data-tokens="1">1</option>
+                                <option data-tokens="2">2</option> -->
+                            </select>
+                    </fieldset>
+                    <div class="form-group">
+                        {{ form.submit(class="btn btn-outline-info") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="container content" align="center">
+            <span class="badge badge-dark">
+                <a href="{{ url_for('home') }}">
+                    <li class="list-group-item list-group-item-light">Back</li>
+                </a>
+            </span>
+        </div>
+    </body>
+</html>
